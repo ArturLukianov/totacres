@@ -1,8 +1,7 @@
 class Transformator:
-    name = "Transformator"
+    name = "transformator"
     input_node = "Node"
-    output_node = "Node"
 
-    @classmethod
+    @staticmethod
     def transform(input_node):
-        return None
+        return []
