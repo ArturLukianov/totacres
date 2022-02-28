@@ -35,7 +35,7 @@ nodes = []
 node_queue = [] # TODO: Replace with actual Queue from collections
 
 ## We are creating our initial node here
-nodes.append(IP("127.0.0.1"))
+nodes.append(IP("10.10.189.5"))
 node_queue.append(nodes[0])
 
 ## The main loop (BFS) - apply transformators to every sutiable node

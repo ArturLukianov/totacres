@@ -10,7 +10,7 @@ import subprocess
 
 
 class GobusterFindSubdirs(Transformator):
-    name = "gobuster find subdirs and endpoint"
+    name = "gobuster find subdirs and endpoints"
     input_node = "HTTP"
     save_to_dir = None
 

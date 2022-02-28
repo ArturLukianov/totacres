@@ -20,7 +20,7 @@ class NmapScanPorts(Transformator):
             return []
 
         with open(os.devnull, "wb") as devnull:
-            subprocess.check_call(["nmap", "-oX",
+            subprocess.check_call(["nmap", "-Pn", "-oX",
                                    os.path.join(NmapScanPorts.save_to_dir, "scan.xml"),
                                    node.content], stdout=devnull, stderr=subprocess.STDOUT)
 

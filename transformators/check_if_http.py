@@ -6,6 +6,7 @@ from transformators.transformator import Transformator
 from nodes.http import HTTP
 import urllib.request
 import urllib.error
+import http.client
 
 
 class CheckHTTP(Transformator):
@@ -17,5 +18,5 @@ class CheckHTTP(Transformator):
         try:
             urllib.request.urlopen(f"http://{node.content[0]}:{node.content[1]}/", timeout=3)
             return [HTTP(node.content[0], node.content[1])]
-        except urllib.error.URLError:
+        except (urllib.error.URLError, http.client.BadStatusLine):
             return []
