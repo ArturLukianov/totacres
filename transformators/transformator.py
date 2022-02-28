@@ -5,3 +5,7 @@ class Transformator:
     @staticmethod
     def transform(input_node):
         return []
+
+    @staticmethod
+    def initialize(root_dir):
+        pass

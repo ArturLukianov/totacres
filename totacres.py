@@ -4,7 +4,12 @@ import importlib
 import inspect
 
 from nodes.ip import IP
+import time
 
+
+root_dir = "./scans/" + str(time.time())
+print(f"[+] Files will be saved to {root_dir}")
+os.mkdir(root_dir)
 
 ## Load transoformator objects from folder
 ## Not the best way to do it, but it works
@@ -21,6 +26,7 @@ for filename in transformator_files:
             attribute = getattr(module, attribute_name)
             if inspect.isclass(attribute) and attribute.__module__ == module.__name__:
                 transformators.append(attribute)
+                transformators[-1].initialize(root_dir)
                 print("[+]", "Loaded", attribute.name, "transformator")
 
 

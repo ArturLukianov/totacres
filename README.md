@@ -9,6 +9,9 @@ RootMe||
 Simple CTF||
 Basic Pentesting||
 
+## Tools in chain
+- nmap
+
 
 ## How to install
 Clone this repository and install dependencies like this:
@@ -20,4 +23,4 @@ git clone https://github.com/ArturLukianov/totacres
 There is no usable tool for now. Click "Watch" and wait till it will be released.
 
 ## Structure
-There are two main entities in this project: nodes and transformators. Nodes are representing a resource and transformators are taking a node and create new nodes from it, just like in Maltego.
+There are three main entities in this project: nodes, transformators and combinators. Nodes are representing a resource and transformators are taking a node and create new nodes from it. Combinators are used, to connect nodes, f.e. create a credential node from login and password nodes.

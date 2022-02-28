@@ -9,4 +9,4 @@ class IP(Node):
         self.content = address
 
     def __str__(self):
-        return f'IP: {self.content}'
+        return f'{self.content}'
