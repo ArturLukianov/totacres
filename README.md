@@ -11,6 +11,7 @@ Basic Pentesting||
 
 ## Tools in chain
 - nmap
+- gobuster
 
 
 ## How to install
