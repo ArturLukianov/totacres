@@ -5,7 +5,7 @@ This project tries to solve as much as possible TryHackMe boxes automated. It's 
 ## Tests
 Machine|User|Root
 -|-|-
-[RootMe](https://tryhackme.com/room/rrootme)||
+[RootMe](https://tryhackme.com/room/rrootme)|✔️|
 Simple CTF||
 Basic Pentesting||
 
