@@ -1,15 +1,18 @@
 #!/usr/bin/env python3
+
 import os
+import sys
 import importlib
 import inspect
-
-from nodes.ip import IP
 import time
 
+from transformators.transformator import Transformator
+from nodes.ip import IP
 
-root_dir = "./scans/" + str(time.time())
-print(f"[+] Files will be saved to {root_dir}")
-os.mkdir(root_dir)
+
+ROOT_DIR = "./scans/" + str(time.time())
+print(f"[+] Files will be saved to {ROOT_DIR}")
+os.mkdir(ROOT_DIR)
 
 ## Load transoformator objects from folder
 ## Not the best way to do it, but it works
@@ -18,15 +21,15 @@ transformators = []
 transformator_files = os.listdir("transformators/")
 
 for filename in transformator_files:
-    if filename.endswith(".py"):
+    if filename.endswith(".py") and not filename.startswith('flycheck'):
         print("[+]", "Loading", filename)
         module_name = filename.split('.')[0]
         module = importlib.import_module(f"transformators.{module_name}")
         for attribute_name in dir(module):
             attribute = getattr(module, attribute_name)
-            if inspect.isclass(attribute) and attribute.__module__ == module.__name__:
+            if inspect.isclass(attribute) and attribute.__module__ == module.__name__ and issubclass(attribute, Transformator):
                 transformators.append(attribute)
-                transformators[-1].initialize(root_dir)
+                transformators[-1].initialize(ROOT_DIR)
                 print("[+]", "Loaded", attribute.name, "transformator")
 
 
@@ -35,7 +38,7 @@ nodes = []
 node_queue = [] # TODO: Replace with actual Queue from collections
 
 ## We are creating our initial node here
-nodes.append(IP("10.10.189.5"))
+nodes.append(IP(sys.argv[1]))
 node_queue.append(nodes[0])
 
 ## The main loop (BFS) - apply transformators to every sutiable node
@@ -54,5 +57,4 @@ while len(node_queue) != 0:
 ## TODO: Make a webapp to draw a nice graph in real time
 for node in nodes:
     print(str(node))
-
 

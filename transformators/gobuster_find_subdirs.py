@@ -36,7 +36,10 @@ class GobusterFindSubdirs(Transformator):
                 for line in f.readlines():
                     if len(line.strip()) == 0:
                         continue
-                    path = line.split('(Status')[0].strip()
+                    if '-->' in line:
+                        path = '/'.join(line.split('--> ')[1].replace('http://', '').split('/')[1:])[:-2]
+                    else:
+                        path = line.split('(Status')[0].strip()[1:]
                     endpoints.append(HTTPEndpoint(node, path))
 
             return endpoints

@@ -6,8 +6,8 @@ from nodes.node import Node
 class HTTPUploadForm(Node):
     name = "HTTPUploadForm"
 
-    def __init__(self, endpoint, filename):
-        self.content = (endpoint, filename)
+    def __init__(self, endpoint, form, inputname):
+        self.content = (endpoint, form, inputname)
 
     def __str__(self):
-        return f"File upload on {str(self.content[1])} (parameter \"{self.content[1]}\")"
+        return f"File upload on {str(self.content[0])} (parameter \"{self.content[2]}\")"
