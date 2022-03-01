@@ -37,4 +37,5 @@ class ChechUnrestrictedFileUpload(Transformator):
                 ind += 1
                 path = res.text[ind:sind+len(filename)]
                 output_nodes.append(SimpleHTTPShell(HTTPEndpoint(node.content[0].content[0], node.content[0].content[1] + path)))
+                break
         return output_nodes
